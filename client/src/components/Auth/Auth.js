@@ -8,6 +8,8 @@ import { useHistory } from 'react-router-dom'
 import { signin, signup } from '../../actions/auth';
 import { useDispatch } from 'react-redux'
 
+
+
 const initialState = { firstName:"", lastName:"", email:"", password:"", confirmPassword:""}
 
 const Auth = () => {
@@ -60,6 +62,8 @@ const Auth = () => {
     console.log("Google Sign In was unsuccessful. Try Again Later");
   }
 
+  const googleId = process.env.React_App_GOOGLE_KEY
+
   return (
     <Container maxWidth="xs">
       <Paper className={classes.paper} elevation={5}>
@@ -84,7 +88,7 @@ const Auth = () => {
                 { isSignup ? "Sign Up" : "Sign In"}
               </Button>
           <GoogleLogin
-          clientId = "1087017909778-tlaul0m7934251hrf026mrudnu0fn6rt.apps.googleusercontent.com"
+          clientId ={googleId}
           render={(renderProps) => (
             <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} variant="contained">
               Google Sign In
