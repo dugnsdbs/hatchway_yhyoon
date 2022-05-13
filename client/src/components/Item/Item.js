@@ -1,18 +1,33 @@
-import React from 'react'
-import { Container, Grow, Grid } from '@material-ui/core';
-import Posts from '../Posts/Posts.js';
+import React, { useEffect } from 'react'
+import { Container, Grow, Grid, CircularProgress } from '@material-ui/core';
+import ItemCard from './ItemCard/ItemCard.js';
+import useStyles from './styles';
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchApi } from '../../actions/fetchApi.js'
 
 const Item = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(fetchApi())
+  },[dispatch])
+
+  const api = useSelector( (state)=>  state?.fetchApi);
+  const movieInfo = api.results
+  console.log(movieInfo)
+  
   return (
-    <Grow in>
-    <Container> 
-      <Grid container justfiycontent="space-between" alignItems="stretch" spacing={3}>
-        <Grid item xs={12} sm={7}>
-          <Posts/>
-        </Grid>
-      </Grid>
-    </Container>
-  </Grow>
+    movieInfo && (
+     <Grid container alignItems="stretch" spacing={3}>
+       {movieInfo.map((movie) => (
+         <Grid key={movie.id} item xs={12} sm={3}>
+           <ItemCard movie={movie}/>
+         </Grid>
+       ))}
+     </Grid>
+    )
   )
 }
 

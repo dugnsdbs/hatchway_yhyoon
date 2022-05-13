@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import Item from './components/Item/Item';
 import Profile from './components/Profile/Profile';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/item' exact component={Item}/>
           <Route path='/profile' exact component={Profile}/>
           <Route path="/auth" excat component={Auth}/>
+          <Route path="/cart" excat component={ShoppingCart}/>
         </Switch>
       </Container>
     </BrowserRouter>

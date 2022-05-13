@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import React, { useState, useEffect } from 'react'
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,71 +12,48 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
-import MuiAppBar from '@mui/material/AppBar';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
-import CheckroomIcon from '@mui/icons-material/Checkroom';
-// import { AppBar } from '@material-ui/core';
+import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import useStyles from './styles';
-
-import { Link } from 'react-router-dom'
-
-const drawerWidth = 240;
-
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  }),
-);
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  background: 'black',
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    background: 'grey',
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
-}));
+import { Main, AppBar, DrawerHeader, drawerWidth, } from './addtional'
+import MovieCreationRoundedIcon from '@mui/icons-material/MovieCreationRounded';
+import { Link, useHistory, useLocation } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 
 const Navbar = () => {
+
+  const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  
+  // console.log(user)
+
+  const logout =() => {
+    dispatch({ type: "LOGOUT"})
+    history.push('/')
+    setUser(null)
+  }
+
+  useEffect(()=> {
+    const token = user?.token;
+    if(token){
+      const decodedToken = decode(token);
+
+      if(decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  },[location])
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -86,11 +63,14 @@ const Navbar = () => {
     setOpen(false);
   };
 
+  const userName = user?.result?.name.toUpperCase()
+
   return (
     <Box sx={{ display: 'flex' }}>
       {/* <CssBaseline /> */}
       <AppBar position="fixed" open={open} className={classes.AppbarColor}>
         <Toolbar>
+          {user && (
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -100,10 +80,19 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Pick & Go!
+          )}
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
+            Movie Start!!
           </Typography>
-          <Button color="inherit" component={Link} to="/auth">Login</Button>
+          { user? (
+          <>
+            <Typography className={classes.userName}>WELCOME!~  {userName}</Typography>
+            <Button color="inherit" component={Link} to="/cart"><ShoppingCartTwoToneIcon /></Button>
+            <Button color="inherit" component={Link} to="/auth" onClick={logout}>Logout</Button>
+          </>
+          ) : 
+            <Button color="inherit" component={Link} to="/auth">Login</Button>
+          }
         </Toolbar>
       </AppBar>
       <Drawer
@@ -126,16 +115,6 @@ const Navbar = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))} */}
            <ListItem  disablePadding>
               <ListItemButton component={Link} to="/">
               <HomeIcon color="primary" className={classes.buttonIcon}/>
@@ -156,13 +135,12 @@ const Navbar = () => {
           <Divider />
           <ListItem  disablePadding>
               <ListItemButton component={Link} to="/item">
-                <CheckroomIcon className={classes.buttonIcon}/>
+                <MovieCreationRoundedIcon className={classes.buttonIcon}/>
                 <ListItemText className={classes.buttonText} >
-                Item
+                Movie List
                 </ListItemText>
               </ListItemButton>
           </ListItem>
-
         </List>
         <Divider />
       </Drawer>

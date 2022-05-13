@@ -10,4 +10,8 @@ export default makeStyles((theme) => ({
   AppbarColor: {
     background: 'black',
   },
+  userName : {
+    width: '50%',
+    alignItems: 'center'
+  }
 }));
