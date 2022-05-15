@@ -18,7 +18,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import useStyles from './styles';
-import { Main, AppBar, DrawerHeader, drawerWidth, } from './addtional'
+import { Main, AppBar, DrawerHeader, drawerWidth, openedMixin} from './addtional'
 import MovieCreationRoundedIcon from '@mui/icons-material/MovieCreationRounded';
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
@@ -40,7 +40,9 @@ const Navbar = () => {
 
   const logout =() => {
     dispatch({ type: "LOGOUT"})
+
     history.push('/')
+
     setUser(null)
   }
 

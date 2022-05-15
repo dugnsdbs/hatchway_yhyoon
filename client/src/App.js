@@ -7,6 +7,7 @@ import Auth from './components/Auth/Auth';
 import Item from './components/Item/Item';
 import Profile from './components/Profile/Profile';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import PostDetails from './components/PostDetails/PostDetails';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/profile' exact component={Profile}/>
           <Route path="/auth" excat component={Auth}/>
           <Route path="/cart" excat component={ShoppingCart}/>
+          <Route path="/item/:id" excat component={PostDetails}/>
         </Switch>
       </Container>
     </BrowserRouter>
