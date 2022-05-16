@@ -12,6 +12,7 @@ API.interceptors.request.use((req) => {
 
 //fetch api call 
 export const getApiPost = () => API.get('/api/ping');
-export const signIn = (formData) => API.post('/users/signin', formData)
-export const signUp = (formData) => API.post('/users/signup', formData)
+export const signIn = (formData) => API.post('/user/signin', formData);
+export const signUp = (formData) => API.post('/user/signup', formData);
+
 
