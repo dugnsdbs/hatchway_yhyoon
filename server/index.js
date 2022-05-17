@@ -6,6 +6,7 @@ import doteven from "dotenv";
 
 import apiRoutes from './routes/fetchApi.js'
 import userRoutes from './routes/users.js';
+import postRoutes from './routes/posts.js';
 
 const app = express();
 doteven.config();
@@ -16,6 +17,7 @@ app.use(cors());
 
 app.use('/api', apiRoutes);
 app.use('/user', userRoutes);
+app.use('/posts', postRoutes)
 
 const PORT = process.env.PORT || 5000;
 

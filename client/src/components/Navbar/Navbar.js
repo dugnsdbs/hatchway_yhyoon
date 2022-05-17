@@ -143,6 +143,15 @@ const Navbar = () => {
                 </ListItemText>
               </ListItemButton>
           </ListItem>
+          <Divider />
+          <ListItem  disablePadding>
+              <ListItemButton component={Link} to="/posts">
+                <MovieCreationRoundedIcon className={classes.buttonIcon}/>
+                <ListItemText className={classes.buttonText} >
+                Share Movie
+                </ListItemText>
+              </ListItemButton>
+          </ListItem>
         </List>
         <Divider />
       </Drawer>

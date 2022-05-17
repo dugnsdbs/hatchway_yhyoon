@@ -15,4 +15,7 @@ export const getApiPost = () => API.get('/api/ping');
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
 
-
+export const fetchPost = () => API.get('/posts');
+export const createPost = (newPost) => API.post('/posts', newPost);
+export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost)
+export const deletePost = (id) => API.delete(`/posts/${id}`);
