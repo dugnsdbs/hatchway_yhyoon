@@ -86,7 +86,7 @@ const Navbar = () => {
           { user? (
           <>
             <Typography className={classes.userName}>WELCOME!~  {userName}</Typography>
-            <Button color="inherit" component={Link} to="/cart"><ShoppingCartTwoToneIcon /></Button>
+            {/* <Button color="inherit" component={Link} to="/cart"><ShoppingCartTwoToneIcon /></Button> */}
             <Button color="inherit" component={Link} to="/" onClick={logout}>Logout</Button>
           </>
           ) : 
@@ -119,15 +119,6 @@ const Navbar = () => {
               <HomeIcon color="primary" className={classes.buttonIcon}/>
                 <ListItemText className={classes.buttonText} >
                 Home
-                </ListItemText>
-              </ListItemButton>
-          </ListItem>
-          <Divider />
-          <ListItem  disablePadding>
-              <ListItemButton component={Link} to="/profile">
-                <AccountCircleIcon color="secondary" className={classes.buttonIcon}/>
-                <ListItemText className={classes.buttonText} >
-                Account Profile
                 </ListItemText>
               </ListItemButton>
           </ListItem>

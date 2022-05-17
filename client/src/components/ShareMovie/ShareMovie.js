@@ -24,7 +24,7 @@ const ShareMovie = () => {
           <Grid item xs={3} sm={3}>
             <Form setCurrentId={setCurrentId} currentId={currentId}/>
           </Grid>
-          <Grid item xs={24} sm={12} md={8}>
+          <Grid item xs={12} sm={12} md={8}>
             <Posts setCurrentId={setCurrentId}/> 
           </Grid>
         </Grid>

@@ -23,7 +23,7 @@ const Home = () => {
   var yyyy = today.getFullYear();
   today = `${yyyy}-${mm}-${dd}`;
   // const movieRealseMonth = movieData.release_date.getMonth()
-  const thisMonth = today.at(6)-1
+  const thisMonth = today.at(6)
 
   const thisMonthMovie = movieData &&  movieData.filter((movie)=> movie.release_date.at(6) == thisMonth)
   
@@ -34,7 +34,7 @@ const Home = () => {
     thisMonthMovie && ( 
     <Grid container alignItems="stretch" spacing={3}>
       {thisMonthMovie.map((movie) => (
-        <Grid key={movie.id} item xs={1} sm={1}>
+        <Grid key={movie.id} item xs={12} sm={4}>
           <ThisMonthMovie movie={movie}/>
         </Grid>
       ))}

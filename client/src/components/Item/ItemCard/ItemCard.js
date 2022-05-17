@@ -10,9 +10,7 @@ const ItemCard = ({movie}) => {
   const classes = useStyles();
   const history = useHistory()
 
-  const openHost = () => history.push(`/item/${movie.id}`)
   return (
-    <ButtonBase onClick={openHost}>
       <Card className={classes.card}>
         <CardMedia className={classes.media} image={`${IMG_API}${movie.poster_path}`} title={movie.title}/>
         <Typography className={classes.title} variant="h6">{movie.title}</Typography>
@@ -21,7 +19,6 @@ const ItemCard = ({movie}) => {
           <Typography variant="body2">{`🍅 ${movie.vote_average}`}</Typography>
         </div>
       </Card>
-    </ButtonBase>
   )
 }
 

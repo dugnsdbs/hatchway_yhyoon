@@ -10,7 +10,7 @@ const Posts = ({ setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const posts = useSelector((state) => state?.post?.posts)
- 
+
   useEffect(() => {
     dispatch(getPosts())
   },[dispatch])

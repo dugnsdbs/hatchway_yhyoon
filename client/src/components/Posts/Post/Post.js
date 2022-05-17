@@ -19,8 +19,6 @@ const Post = ({ post, setCurrentId }) => {
   const history = useHistory();
 
   const openPost = () => history.push(`/posts/${post._id}`)
-
-  console.log(post._id)
   
   return (
     <Card className={classes.card}  >
