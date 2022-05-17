@@ -9,15 +9,14 @@ import { getPosts } from '../../actions/post';
 const Posts = ({ setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state?.post)
+  const posts = useSelector((state) => state?.post?.posts)
  
   useEffect(() => {
     dispatch(getPosts())
   },[dispatch])
 
-console.log(posts)
-
   return (
+
     !posts ? <CircularProgress/> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {posts.map((post)=> (

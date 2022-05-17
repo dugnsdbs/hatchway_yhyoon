@@ -36,14 +36,21 @@ const Navbar = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   
-  // console.log(user)
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const userName = user?.result?.name.toUpperCase()
 
   const logout =() => {
     dispatch({ type: "LOGOUT"})
-
     history.push('/')
-
     setUser(null)
+    
   }
 
   useEffect(()=> {
@@ -56,16 +63,6 @@ const Navbar = () => {
 
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[location])
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const userName = user?.result?.name.toUpperCase()
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -90,7 +87,7 @@ const Navbar = () => {
           <>
             <Typography className={classes.userName}>WELCOME!~  {userName}</Typography>
             <Button color="inherit" component={Link} to="/cart"><ShoppingCartTwoToneIcon /></Button>
-            <Button color="inherit" component={Link} to="/auth" onClick={logout}>Logout</Button>
+            <Button color="inherit" component={Link} to="/" onClick={logout}>Logout</Button>
           </>
           ) : 
             <Button color="inherit" component={Link} to="/auth">Login</Button>

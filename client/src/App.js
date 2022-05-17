@@ -8,7 +8,7 @@ import Item from './components/Item/Item';
 import Profile from './components/Profile/Profile';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import ShareMovie from './components/ShareMovie/ShareMovie';
-// import PostDetails from './components/PostDetails/PostDetails';
+import PostDetails from './components/PostDetails/PostDetails';
 
 
 const App = () => {
@@ -23,6 +23,7 @@ const App = () => {
           <Route path="/auth" excat component={Auth}/>
           <Route path="/cart" excat component={ShoppingCart}/>
           {/* <Route path="/post/:id" excat component={PostDetails}/> */}
+          <Route path ="/posts/:id" excat component={PostDetails}/>
           <Route path="/posts" excat component={ShareMovie}/>
 
         </Switch>

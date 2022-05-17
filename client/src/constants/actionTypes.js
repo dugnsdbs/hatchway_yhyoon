@@ -8,3 +8,4 @@ export const GET_API= "GET_API";
 export const AUTH= "AUTH";
 export const LOGOUT= "LOGOUT";
 
+export const FETCH_POST = "FETCH_POST";

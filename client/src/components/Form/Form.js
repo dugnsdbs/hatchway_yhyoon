@@ -14,7 +14,7 @@ const Form = ({ setCurrentId, currentId }) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'))
 
-  const post = useSelector((state) => currentId ? state.post.find((p) => p._id === currentId) : null);
+  const post = useSelector((state) => currentId ? state.post.posts.find((p) => p._id === currentId) : null);
 
   useEffect(()=>{
     if(post) setPostData(post)
