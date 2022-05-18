@@ -27,13 +27,15 @@ const PostDetails = () => {
   return (
     <div>
       {post ? (
+        <>
         <Paper style={{ padding: "20px", borderRadius: "15px"}} elevation={6} >
           <div className={classes.card}>
             <div className={classes.section}>
-             <Typography variant="h3" component="h2">{post.title}</Typography>
+             <Typography variant="h3" component="h2">{post.title.toUpperCase()}</Typography>
              <Divider style={{ margin: '20px 0' }} />
-             <Typography variant="body1">Created by: {(user.result.name) || (user.result.givenName)}</Typography>
-             <Typography gutterBottom variant="body1" component="p">RATE: {post.rate}</Typography>
+             <Typography variant="body1">Creator: {(user.result.name.toUpperCase()) || (user.result.givenName.toUpperCase())}</Typography>
+             <Typography gutterBottom variant="body1" component="p">Rate: {post.rate}</Typography>
+             <Typography gutterBottom variant="body1" component="p">Genre: {post.genre.toUpperCase()}</Typography>
              <Divider style={{ margin: '20px 0' }} />
              <Typography gutterBottom variant="h4" component="h2">Comment</Typography>
              <Typography gutterBottom variant="body1" component="p">{post.comment}</Typography>
@@ -44,27 +46,11 @@ const PostDetails = () => {
           </div>
           </div>
         </Paper>
+
+        </>
       )
-      : null }
+      : <CircularProgress/> }
     </div>
-    // <Paper style={{ padding: "20px", borderRadius: "15px"}} elevation={6}>
-    //   <div className={classes.card}>
-    //       <div className={classes.section}>
-    //         <Typography variant="h3" component="h2">{post.title}</Typography>
-    //         {/* <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography> */}
-    //         <Typography gutterBottom variant="body1" component="p">{post.title}</Typography>
-    //         {/* <Typography variant="h6">Created by: {post.name}</Typography> */}
-    //         <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
-    //         <Divider style={{ margin: '20px 0' }} />
-    //         <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
-    //         <Divider style={{ margin: '20px 0' }} />
-    //         <Divider style={{ margin: '20px 0' }} />
-    //       </div>
-    //       <div className={classes.imageSection}>
-    //         <img className={classes.media} src={post.selectedFile } alt={post.title} />
-    //       </div>
-    //     </div>
-    //   </Paper>
   )
 }
 

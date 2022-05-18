@@ -1,20 +1,23 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  appBarSearch: {
-    borderRadius: 4,
-    marginBottom: '1rem',
+  mainContainer: {
     display: 'flex',
-    padding: '16px',
+    alignItems: 'center',
   },
-  pagination: {
-    borderRadius: 4,
-    marginTop: '1rem',
-    padding: '16px',
+  smMargin: {
+    margin: theme.spacing(1),
   },
-  gridContainer: {
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column-reverse',
-    },
+  actionDiv: {
+    textAlign: 'center',
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    borderRadius: '15px',
+    height: '100%',
+    position: 'relative',
+    width: "300px"
   },
 }));

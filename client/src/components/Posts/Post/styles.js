@@ -36,17 +36,36 @@ export default makeStyles({
   grid: {
     display: 'flex',
   },
-  details: {
+  detailsOne: {
     display: 'flex',
-    justifyContent: 'space-between',
-    margin: '20px',
+    justifyContent: 'center',
+    marginTop: '10px',
+
+  },
+  detailsTwo: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '10px',
+  
   },
   title: {
     padding: '0 16px',
+    display: 'flex',
+    justifyContent: 'center',
+
   },
   cardActions: {
     padding: '0 16px 8px 16px',
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    borderRadius: '15px',
+    height: '100%',
+    position: 'relative',
+    width: "200px"
   },
 });

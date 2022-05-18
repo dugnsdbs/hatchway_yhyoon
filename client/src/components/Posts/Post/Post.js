@@ -17,24 +17,23 @@ const Post = ({ post, setCurrentId }) => {
   const history = useHistory();
 
   const openPost = () => history.push(`/posts/${post._id}`)
-
-  console.log(post)
-  console.log(user.result)
   
   return (
+    <>
     <Card className={classes.card}  >
       <CardMedia className={classes.media} image={post.selectedFile} title={post.title} onClick={openPost}/>
       <div className={classes.overlay}>
-        <Typography variant="h6">{post.title}</Typography>
+        <Typography variant="h6">{post.title.toUpperCase()}</Typography>
         <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
       </div>
-      <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary">{post.rate}</Typography>
+      <div className={classes.detailsOne}>
+        <Typography variant="body2" color="textSecondary">Rate: {post.rate}</Typography>
         </div>
-        <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
-        <CardContent>
-          <Typography variant="h5" gutterBottom>{post.comment}</Typography>
-        </CardContent>
+        <div className={classes.detailsTwo}>
+        <Typography variant="body2" color="textSecondary">User: {user.result.name}</Typography>
+        </div>
+        <Typography className={classes.title} variant="h5" gutterBottom>{post.genre.toUpperCase()}</Typography>
+        
         <CardActions className={classes.cardActions}>
           {(user?.result?.name === post?.name ) && (
             <>
@@ -50,6 +49,7 @@ const Post = ({ post, setCurrentId }) => {
           )}
         </CardActions>
     </Card>
+    </>
   )
 }
 

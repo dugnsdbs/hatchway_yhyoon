@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
 const Form = ({ setCurrentId, currentId }) => {
-  const [postData, setPostData] = useState({title:"", rate:"", comment:"", selectedFile:""})
+  const [postData, setPostData] = useState({title:"", genre:"", rate:"", comment:"", selectedFile:""})
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,7 +38,7 @@ const Form = ({ setCurrentId, currentId }) => {
 
   const clear = () => {
     setCurrentId(null)
-    setPostData({title:"", rate:"", comment:"", selectedFile:""})
+    setPostData({title:"", genre:"", rate:"", comment:"", selectedFile:""})
   }
 
   return (
@@ -47,6 +47,8 @@ const Form = ({ setCurrentId, currentId }) => {
         <Typography variant="h6">Your Favorite Movie?</Typography>
        
         <TextField name="title" variant="outlined" label="title" fullWidth value={postData.title} onChange={(e)=> setPostData({...postData, title: e.target.value})}/>
+        <TextField name="genre" variant="outlined" label="genre" fullWidth value={postData.genre}
+        onChange={(e)=> setPostData({...postData, genre: e.target.value})}/>
         <TextField name="rate" variant="outlined" label="rate" fullWidth value={postData.rate}
         onChange={(e)=> setPostData({...postData, rate: e.target.value})}/>
         <TextField name="comment" variant="outlined" label="comment" fullWidth value={postData.comment} onChange={(e)=> setPostData({...postData, comment:e.target.value})}/>

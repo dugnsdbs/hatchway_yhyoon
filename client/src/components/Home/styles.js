@@ -17,4 +17,13 @@ export default makeStyles((theme) => ({
       flexDirection: 'column-reverse',
     },
   },
+  grid: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  mainContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+
 }));

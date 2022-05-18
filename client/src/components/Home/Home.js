@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, Grid, Grow } from "@material-ui/core";
+import { Container, Grid, Grow, Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux"
 import useStyles from "./styles";
 import { fetchApi } from '../../actions/fetchApi.js'
@@ -7,7 +7,8 @@ import ThisMonthMovie from './ThisMonthMovie/ThisMonthMovie'
 
 
 const Home = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const classes = useStyles();
   
   useEffect(()=> {
     dispatch(fetchApi())
@@ -29,9 +30,12 @@ const Home = () => {
   
   return (
     thisMonthMovie && ( 
-    <Grid container alignItems="stretch" spacing={3}>
+      <Grid  container alignItems="stretch" spacing={3}>
+
+      <Typography >This Month Movies!</Typography>
+
       {thisMonthMovie.map((movie) => (
-        <Grid key={movie.id} item xs={12} sm={4}>
+        <Grid className={classes.grid} key={movie.id} item xs={12} sm={12} md={6} lg={3}>
           <ThisMonthMovie movie={movie}/>
         </Grid>
       ))}
@@ -41,3 +45,4 @@ const Home = () => {
 }
 
 export default Home
+
