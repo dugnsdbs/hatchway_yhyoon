@@ -4,7 +4,7 @@ import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui
 
 import { GoogleLogin } from 'react-google-login';
 import { useHistory } from 'react-router-dom'
-import Icon from './Icon';
+
 
 import { useDispatch } from 'react-redux'
 
@@ -91,9 +91,9 @@ const Auth = () => {
             {isSignup ? "Sign Up" : "Sign in"}
           </Button>
           <GoogleLogin 
-            clientId={process.env.React_App_GOOGLE_KEY}
+            clientId="139848927176-7oia94d7c59vvnvcks9fafqgh5g76ci9.apps.googleusercontent.com"
             render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon/>} variant="contained">
+              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled}  variant="contained">
                 Google Sign In
               </Button>
             )}

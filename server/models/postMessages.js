@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
-  title: String,
-  genre: String,
-  rate: String,
-  comment: String,
+  title: { type: String, required: true },
+  genre: { type: String, required: true },
+  rate: { type: String, required: true },
+  comment: { type: String, required: true },
   name: String, 
   selectedFile: String,
   comments: {type: [String], default:[]},

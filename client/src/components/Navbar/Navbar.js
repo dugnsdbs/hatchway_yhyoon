@@ -64,6 +64,8 @@ const Navbar = () => {
     setUser(JSON.parse(localStorage.getItem('profile')))
   },[location])
 
+  const openHome = () => history.push('/')
+
   return (
     <Box sx={{ display: 'flex' }}>
       {/* <CssBaseline /> */}
@@ -80,8 +82,8 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           )}
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
-            Movie Start!!
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={openHome}>
+            MOVIE HATCHWAY
           </Typography>
           { user? (
           <>

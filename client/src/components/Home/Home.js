@@ -30,16 +30,18 @@ const Home = () => {
   
   return (
     thisMonthMovie && ( 
+      <>
+      <Typography variant="h5" style={{padding:"20px"}}>MOVIE HATCHWAY</Typography>
+      <div>
       <Grid  container alignItems="stretch" spacing={3}>
-
-      <Typography >This Month Movies!</Typography>
-
       {thisMonthMovie.map((movie) => (
         <Grid className={classes.grid} key={movie.id} item xs={12} sm={12} md={6} lg={3}>
           <ThisMonthMovie movie={movie}/>
         </Grid>
       ))}
     </Grid>
+    </div>
+    </>
   )
   )
 }

@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
   },
   grid: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   mainContainer: {
     display: 'flex',

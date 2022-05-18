@@ -29,7 +29,7 @@ export const createPost = async (req, res) => {
   await newPost.save()
   res.status(200).json(newPost)
   } catch (error) {
-    res.status(400).json({message: error.message}) 
+    res.states(400).json({message: error.message})
   }
 }
 

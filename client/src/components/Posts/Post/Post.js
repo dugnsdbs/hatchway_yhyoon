@@ -18,7 +18,7 @@ const Post = ({ post, setCurrentId }) => {
 
   const openPost = () => history.push(`/posts/${post._id}`)
 
-  console.log(post.name)
+  console.log(post)
   console.log(user.result.name)
   
   return (
@@ -26,7 +26,7 @@ const Post = ({ post, setCurrentId }) => {
     <Card className={classes.card}  >
       <CardMedia className={classes.media} image={post.selectedFile} title={post.title} onClick={openPost}/>
       <div className={classes.overlay}>
-        <Typography variant="h6">{post.title.toUpperCase()}</Typography>
+        <Typography variant="h6">{post?.title.toUpperCase()}</Typography>
         <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
       </div>
       <div className={classes.detailsOne}>
