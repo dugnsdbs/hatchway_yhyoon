@@ -19,12 +19,12 @@ const ShareMovie = () => {
 
   return (
     <Grow in>
-      <Container>
+      <Container maxWidth="xl">
         <Grid className={classes.mainContainer} container justifyContent="space-between" alignItems="stretch" spacing={3}>
-          <Grid item xs={3} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
             <Form setCurrentId={setCurrentId} currentId={currentId}/>
           </Grid>
-          <Grid item xs={12} sm={12} md={8}>
+          <Grid item xs={12} sm={6} md={9}>
             <Posts setCurrentId={setCurrentId}/> 
           </Grid>
         </Grid>

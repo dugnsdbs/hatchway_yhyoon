@@ -7,7 +7,7 @@ const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
 const ItemCard = ({movie}) => {
   const classes = useStyles();
-  console.log(movie)
+  
   return (
     
     <Card className={classes.card}>

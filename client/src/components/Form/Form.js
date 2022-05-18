@@ -7,11 +7,14 @@ import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 import { createPost, updatePost } from '../../actions/post'
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 const Form = ({ setCurrentId, currentId }) => {
   const [postData, setPostData] = useState({title:"", rate:"", comment:"", selectedFile:""})
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const user = JSON.parse(localStorage.getItem('profile'))
 
   const post = useSelector((state) => currentId ? state.post.posts.find((p) => p._id === currentId) : null);
@@ -24,10 +27,10 @@ const Form = ({ setCurrentId, currentId }) => {
     e.preventDefault()
 
     if(currentId ) {
-      dispatch(updatePost(currentId, postData))
+      dispatch(updatePost(currentId, {...postData, name: user?.result?.name}))
       clear()
     } else {
-      dispatch(createPost(postData))
+      dispatch(createPost({...postData, name: user?.result?.name}))
       clear()
     
     }

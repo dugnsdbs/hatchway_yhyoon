@@ -22,10 +22,12 @@ const PostDetails = () => {
     dispatch(getPost(id));
   },[id])
 
+  const openPost = () => history.push(`/posts`)
+
   return (
     <div>
       {post ? (
-        <Paper style={{ padding: "20px", borderRadius: "15px"}} elevation={6}>
+        <Paper style={{ padding: "20px", borderRadius: "15px"}} elevation={6} >
           <div className={classes.card}>
             <div className={classes.section}>
              <Typography variant="h3" component="h2">{post.title}</Typography>
@@ -38,7 +40,7 @@ const PostDetails = () => {
             {/* <Divider style={{ margin: '20px 0' }} /> */}
           </div>
           <div className={classes.imageSection}>
-            <img className={classes.media} src={post.selectedFile } alt={post.title} />
+            <img className={classes.media} src={post.selectedFile } alt={post.title} onClick={openPost}/>
           </div>
           </div>
         </Paper>

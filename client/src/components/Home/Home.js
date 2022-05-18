@@ -27,9 +27,6 @@ const Home = () => {
 
   const thisMonthMovie = movieData &&  movieData.filter((movie)=> movie.release_date.at(6) == thisMonth)
   
-  console.log(thisMonth)
-  console.log(thisMonthMovie)
-
   return (
     thisMonthMovie && ( 
     <Grid container alignItems="stretch" spacing={3}>
