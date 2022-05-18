@@ -17,6 +17,9 @@ const Post = ({ post, setCurrentId }) => {
   const history = useHistory();
 
   const openPost = () => history.push(`/posts/${post._id}`)
+
+  console.log(post.name)
+  console.log(user.result.name)
   
   return (
     <>

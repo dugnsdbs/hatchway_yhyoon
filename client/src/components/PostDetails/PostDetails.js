@@ -6,6 +6,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getPost } from '../../actions/post'
 
 import useStyles from './styles'
+import CommentSection from './CommentSection';
 
 // import CommentSection from './CommentSection';
 
@@ -47,9 +48,18 @@ const PostDetails = () => {
           </div>
         </Paper>
 
+        <div> 
+        <Paper style={{ padding: "50px", borderRadius: "15px", margin: "20px"}} elevation={6} >
+          <CommentSection post={post}/>
+          </Paper>
+          </div>
+       
         </>
       )
       : <CircularProgress/> }
+    
+
+   
     </div>
   )
 }
