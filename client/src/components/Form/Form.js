@@ -41,17 +41,21 @@ const Form = ({ setCurrentId, currentId }) => {
     setPostData({title:"", genre:"", rate:"", comment:"", selectedFile:""})
   }
 
+  const handleChange = (e) => {
+    setPostData({...postData, [e.target.name]: e.target.value})
+  }
+
   return (
     <Paper className={classes.paper}>
       <form autocompelte="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">Your Favorite Movie?</Typography>
        
-        <TextField name="title" variant="outlined" label="title" fullWidth value={postData.title} onChange={(e)=> setPostData({...postData, title: e.target.value})}/>
+        <TextField name="title" variant="outlined" label="title" fullWidth value={postData.title} onChange={handleChange}/>
         <TextField name="genre" variant="outlined" label="genre" fullWidth value={postData.genre}
-        onChange={(e)=> setPostData({...postData, genre: e.target.value})}/>
+        onChange={handleChange}/>
         <TextField name="rate" variant="outlined" label="rate" fullWidth value={postData.rate}
-        onChange={(e)=> setPostData({...postData, rate: e.target.value})}/>
-        <TextField name="comment" variant="outlined" label="comment" fullWidth value={postData.comment} onChange={(e)=> setPostData({...postData, comment:e.target.value})}/>
+        onChange={handleChange}/>
+        <TextField name="comment" variant="outlined" label="comment" fullWidth value={postData.comment} onChange={handleChange}/>
         <div className={classes.fileInput}>
           <FileBase type="file" multiple={false} onDone={({base64})=> setPostData({...postData, selectedFile: base64})}/>
         </div>

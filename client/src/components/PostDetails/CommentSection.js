@@ -15,11 +15,11 @@ const CommentSection = ({ post }) => {
   const user = JSON.parse(localStorage.getItem('profile'))
   const commentsRef = useRef()
 
-  const handleClick = async () => {
+  const handleClick =  async () => {
     // current user = comment (state) => input 
-    const finalComment = `${user.result.name}: ${comment}`;
+    const finalComment = `${user?.result?.name}: ${comment}`;
     // send finalcomment + post._id  which post 
-    const newComments = await dispatch(commentPost(finalComment, post._id))
+    const newComments =  await dispatch(commentPost(finalComment, post._id))
 
     setComments(newComments)
     setComment('')

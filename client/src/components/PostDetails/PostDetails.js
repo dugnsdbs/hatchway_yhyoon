@@ -24,6 +24,7 @@ const PostDetails = () => {
   },[id])
 
   const openPost = () => history.push(`/posts`)
+  console.log(post)
 
   return (
     <div>
@@ -34,7 +35,7 @@ const PostDetails = () => {
             <div className={classes.section}>
              <Typography variant="h3" component="h2">{post.title.toUpperCase()}</Typography>
              <Divider style={{ margin: '20px 0' }} />
-             <Typography variant="body1">Creator: {(user.result.name.toUpperCase()) || (user.result.givenName.toUpperCase())}</Typography>
+             <Typography variant="body1">Creator: {(post.name.toUpperCase())}</Typography>
              <Typography gutterBottom variant="body1" component="p">Rate: {post.rate}</Typography>
              <Typography gutterBottom variant="body1" component="p">Genre: {post.genre.toUpperCase()}</Typography>
              <Divider style={{ margin: '20px 0' }} />
